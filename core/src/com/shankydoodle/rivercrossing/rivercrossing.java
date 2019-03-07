@@ -8,26 +8,39 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class rivercrossing extends ApplicationAdapter {
 	SpriteBatch batch;
-	Texture img;
+	Texture background;
+	Texture boat, startButton;
 	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
+		background = new Texture("bg.jpg");
+		boat = new Texture("boat.png");
+        startButton = new Texture("start2.png");
 	}
 
 	@Override
 	public void render () {
-		Gdx.gl.glClearColor(1, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        float screenWidth = Gdx.graphics.getWidth();
+        float screenHeight = Gdx.graphics.getHeight();
+        float boatWidth = screenWidth/4;
+        float boatHeight = screenHeight/4;
+
 		batch.begin();
-		batch.draw(img, 0, 0);
+
+		batch.draw(background, 0, 0, screenWidth, screenHeight);
+		batch.draw(boat, screenWidth-boatWidth-150, 0, boatWidth,boatHeight);
+		batch.draw(startButton, 100, screenHeight-350, screenWidth/13, screenWidth/13);
+
+
+
+
 		batch.end();
 	}
 	
 	@Override
 	public void dispose () {
 		batch.dispose();
-		img.dispose();
+		background.dispose();
 	}
 }
