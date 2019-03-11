@@ -14,6 +14,14 @@ public class rivercrossing extends ApplicationAdapter {
 
 	Sprite sGoButton, sHomeButton, sRestartButton;
 
+	int boatState = 0; // 1 for rowing left && 2 for rowing right.
+    float boatX;
+
+    float boatXLeftLimit;
+    float boatXRightLimit;
+
+
+
 	@Override
 	public void create () {
         float screenWidth = Gdx.graphics.getWidth();
@@ -35,6 +43,10 @@ public class rivercrossing extends ApplicationAdapter {
 
         restartButton = new Texture("restart.png");
         sRestartButton = new Sprite(restartButton);
+
+        boatXRightLimit = screenWidth-boatWidth-150;
+        boatXLeftLimit = 150;
+        boatX = boatXRightLimit;
 	}
 
 	@Override
@@ -47,10 +59,9 @@ public class rivercrossing extends ApplicationAdapter {
 		batch.begin();
 
 		batch.draw(background, 0, 0, screenWidth, screenHeight);
-        batch.draw(boat, screenWidth-boatWidth-150, 0, boatWidth,boatHeight);
 
 		batch.draw(goButton, 100, screenHeight-350, screenWidth/13, screenWidth/13);
-//        batch.draw(homeButton, screenWidth-300, screenHeight-350, screenWidth/13, screenWidth/13);
+        batch.draw(homeButton, screenWidth-300, screenHeight-350, screenWidth/13, screenWidth/13);
         batch.draw(restartButton, screenWidth-500, screenHeight-350, screenWidth/13, screenWidth/13);
         sHomeButton.draw(batch);
 
@@ -61,29 +72,34 @@ public class rivercrossing extends ApplicationAdapter {
             if(touchY > 170 && touchY< 330){
                 if(touchX > 120 && touchX < 290){
                     System.out.println("go button clicked");
-                }else if(touchX > 2350 && touchX<2390){
+                    if(boatState == 0 ){
+                        if(boatX >= boatXRightLimit){
+                            boatState = 1;
+                        }else if(boatX <= boatXLeftLimit){
+                            boatState = 2;
+                        }
+                    }
+
+                }else if(touchX > 2240 && touchX<2390){
                     System.out.println("reset button clicked");
                 }else if(touchX > 2450 && touchX<2600){
                     System.out.println("home button clicked");
                 }
             }
 
-
-//            if(touchY < (screenHeight-500)){
-                System.out.println("upperBar clicked");
-                System.out.printf("%f", touchY);
-                System.out.println("....");
-                System.out.printf("%f", screenHeight);
-
-
-//            }
-//            System.out.printf("%f", touchX);
-//            System.out.printf("%f", touchY);
-
-
         }
 
+        if (boatState == 1) {
+            boatX -= 10;
+        } else if (boatState == 2) {
+            boatX += 10;
+        }
 
+        if(boatX <= boatXLeftLimit || boatX >= boatXRightLimit){
+            boatState = 0;
+        }
+
+        batch.draw(boat, boatX, 0, boatWidth,boatHeight);
 
 
 
