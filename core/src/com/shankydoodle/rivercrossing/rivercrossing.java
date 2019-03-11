@@ -22,8 +22,14 @@ public class rivercrossing extends ApplicationAdapter {
 
     Texture boy1, girl1, boy2, girl2, boy3, girl3;
     float boy1X, girl1X, boy2X, girl2X, boy3X, girl3X;
+    float boy1Y, girl1Y, boy2Y, girl2Y, boy3Y, girl3Y;
     float characterWidth, characterHeight;
     float charInBoatY, charOnGround;
+    float char1InBoatX, char2InBoatX;
+
+    //static right & left x of characters;
+    float boy1SRX, girl1SRX, boy2SRX, girl2SRX, boy3SRX, girl3SRX;
+    float boy1SLX, girl1SLX, boy2SLX, girl2SLX, boy3SLX, girl3SLX;
 
 	@Override
 	public void create () {
@@ -60,26 +66,45 @@ public class rivercrossing extends ApplicationAdapter {
         charInBoatY = 100;
         charOnGround = 400;
 
+        boatX = boatXRightLimit;
+
+        char1InBoatX = boatX + 100;
+        char2InBoatX = boatX + boatWidth - 100;
+
+        boy1SRX = screenWidth-((characterWidth+5)*6);
+        girl1SRX = screenWidth-((characterWidth+10)*5);
+
+        boy2SRX = screenWidth-((characterWidth+5)*4);
+        girl2SRX = screenWidth-((characterWidth+10)*3);
+
+        boy3SRX = screenWidth-((characterWidth+5)*2);
+        girl3SRX = screenWidth-((characterWidth+25)*1);
+
         setDimensionsOfMovables();
 	}
 
 	public void setDimensionsOfMovables(){
-        float screenWidth = Gdx.graphics.getWidth();
-        float screenHeight = Gdx.graphics.getHeight();
-        float boatWidth = screenWidth/4;
-        float boatHeight = screenHeight/4;
-
 
         boatX = boatXRightLimit;
 
-        boy1X = screenWidth-((characterWidth+5)*6);
-        girl1X = screenWidth-((characterWidth+10)*5);
+        boy1X = boy1SRX;
+        girl1X = girl1SRX;
 
-        boy2X = screenWidth-((characterWidth+5)*4);
-        girl2X = screenWidth-((characterWidth+10)*3);
+        boy2X = boy2SRX;
+        girl2X = girl2SRX;
 
-        boy3X = screenWidth-((characterWidth+5)*2);
-        girl3X = screenWidth-((characterWidth+10)*1);
+        boy3X = boy3SRX;
+        girl3X = girl3SRX;
+
+        //------------------
+        boy1Y = charOnGround;
+        girl1Y = charOnGround;
+
+        boy2Y = charOnGround;
+        girl2Y = charOnGround;
+
+        boy3Y = charOnGround;
+        girl3Y = charOnGround;
 
     }
 
@@ -105,9 +130,6 @@ public class rivercrossing extends ApplicationAdapter {
             float touchX = Gdx.input.getX();
             float touchY = Gdx.input.getY();
 
-            System.out.printf("%f", touchY);
-            System.out.println("im touchY");
-
             if(touchY > 170 && touchY< 330){
                 if(touchX > 120 && touchX < 290){
                     if(boatState == 0 ){
@@ -124,7 +146,10 @@ public class rivercrossing extends ApplicationAdapter {
                     System.out.println("home button clicked");
                 }
             }else if(touchY > 700 && touchY< 930){
-                //detect character clicks
+                if(boy1SRX < touchX && touchX< (boy1SRX+characterWidth) && boy1Y == charOnGround){
+                    boy1Y = charInBoatY;
+                    boy1X = char1InBoatX;
+                }
 
             }
 
@@ -141,16 +166,18 @@ public class rivercrossing extends ApplicationAdapter {
             boatState = 0;
         }
 
+
+        batch.draw(boy1, boy1X, boy1Y, characterWidth, characterHeight);
+        batch.draw(girl1, girl1X, girl1Y, characterWidth, characterHeight);
+
+        batch.draw(boy2, boy2X, boy2Y, characterWidth, characterHeight);
+        batch.draw(girl2, girl2X, girl2Y, characterWidth, characterHeight);
+
+        batch.draw(boy3, boy3X, boy3Y, characterWidth, characterHeight);
+        batch.draw(girl3, girl3X, girl3Y, characterWidth, characterHeight);
+
+
         batch.draw(boat, boatX, 0, boatWidth,boatHeight);
-
-        batch.draw(boy1, boy1X, charOnGround, characterWidth, characterHeight);
-        batch.draw(girl1, girl1X, charOnGround, characterWidth, characterHeight);
-
-        batch.draw(boy2, boy2X, charOnGround, characterWidth, characterHeight);
-        batch.draw(girl2, girl2X, charOnGround, characterWidth, characterHeight);
-
-        batch.draw(boy3, boy3X, charOnGround, characterWidth, characterHeight);
-        batch.draw(girl3, girl3X, charOnGround, characterWidth, characterHeight);
 
 
         batch.end();
