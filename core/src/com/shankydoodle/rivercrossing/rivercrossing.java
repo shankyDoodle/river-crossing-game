@@ -143,7 +143,7 @@ public class rivercrossing extends ApplicationAdapter {
 
             if (touchY > 170 && touchY < 330) {
                 if (touchX > 120 && touchX < 290) {
-                    if (boatState == 0) {
+                    if (boatState == 0 && (boatLeftHuman!=0 || boatRightHuman!=0)) {
                         if (boatX >= boatXRightLimit) {
                             boatState = 1;
                         } else if (boatX <= boatXLeftLimit) {
@@ -199,8 +199,12 @@ public class rivercrossing extends ApplicationAdapter {
 
         if (boatState == 1) {
             boatX -= 10;
+            handleMoveCharacterWithBoat();
+
         } else if (boatState == 2) {
             boatX += 10;
+            handleMoveCharacterWithBoat();
+
         }
 
         if(boatX <= boatXLeftLimit || boatX >= boatXRightLimit){
@@ -229,6 +233,54 @@ public class rivercrossing extends ApplicationAdapter {
             boatLeftHuman = n;
         }else {
             boatRightHuman = n;
+        }
+    }
+
+    public void handleMoveCharacterWithBoat(){
+        if(boatLeftHuman !=0){
+            if(boatState == 1){
+                switch ((boatLeftHuman)){
+                    case 1: boy1X -= 10; break;
+                    case 2: girl1X -= 10; break;
+                    case 3: boy2X -= 10; break;
+                    case 4: girl2X -= 10; break;
+                    case 5: boy3X -= 10; break;
+                    case 6: girl3X -= 10; break;
+                }
+            }else if(boatState == 2){
+                switch ((boatLeftHuman)){
+                    case 1: boy1X += 10; break;
+                    case 2: girl1X += 10; break;
+                    case 3: boy2X += 10; break;
+                    case 4: girl2X += 10; break;
+                    case 5: boy3X += 10; break;
+                    case 6: girl3X += 10; break;
+                }
+            }
+
+        }
+
+        if(boatRightHuman != 0){
+            if(boatState == 1){
+                switch ((boatRightHuman)){
+                    case 1: boy1X -= 10; break;
+                    case 2: girl1X -= 10; break;
+                    case 3: boy2X -= 10; break;
+                    case 4: girl2X -= 10; break;
+                    case 5: boy3X -= 10; break;
+                    case 6: girl3X -= 10; break;
+                }
+            }else if(boatState == 2){
+                switch ((boatRightHuman)){
+                    case 1: boy1X += 10; break;
+                    case 2: girl1X += 10; break;
+                    case 3: boy2X += 10; break;
+                    case 4: girl2X += 10; break;
+                    case 5: boy3X += 10; break;
+                    case 6: girl3X += 10; break;
+                }
+            }
+
         }
     }
 
