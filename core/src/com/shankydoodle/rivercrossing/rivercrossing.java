@@ -98,6 +98,9 @@ public class rivercrossing extends ApplicationAdapter {
 	}
 
 	public void setDimensionsOfMovables(){
+        float screenWidth = Gdx.graphics.getWidth();
+        float boatWidth = screenWidth/4;
+
 
         boatX = boatXRightLimit;
 
@@ -120,6 +123,9 @@ public class rivercrossing extends ApplicationAdapter {
         boy3Y = charOnGround;
         girl3Y = charOnGround;
 
+        char1InBoatX = boatX + 100;
+        char2InBoatX = boatX + boatWidth - 150 - characterWidth;
+
     }
 
 	@Override
@@ -141,6 +147,9 @@ public class rivercrossing extends ApplicationAdapter {
             float touchX = Gdx.input.getX();
             float touchY = Gdx.input.getY();
 
+            System.out.printf("%f", touchY);
+            System.out.println("im touchY");
+
             if (touchY > 170 && touchY < 330) {
                 if (touchX > 120 && touchX < 290) {
                     if (boatState == 0 && (boatLeftHuman!=0 || boatRightHuman!=0)) {
@@ -156,39 +165,208 @@ public class rivercrossing extends ApplicationAdapter {
             } else if (touchY > 700 && touchY < 930) {
 
                 if(boatLeftHuman == 0 || boatRightHuman == 0){
-                    float localBoatCharX = boatLeftHuman == 0 ? char1InBoatX : char2InBoatX;
+                    if(boatX == boatXRightLimit){
+                        float localBoatCharX = boatLeftHuman == 0 ? char1InBoatX : char2InBoatX;
 
-                    if (boy1SRX < touchX && touchX < (boy1SRX + characterWidth) && boy1Y == charOnGround) {
-                        boy1Y = charInBoatY;
-                        boy1X = localBoatCharX;
-                        updateBoatCharacterState(1);
+                        if (boy1SRX < touchX && touchX < (boy1SRX + characterWidth) && boy1Y == charOnGround) {
+                            boy1Y = charInBoatY;
+                            boy1X = localBoatCharX;
+                            updateBoatCharacterState(1);
+
+                        }
+                        else if (girl1SRX < touchX && touchX < (girl1SRX + characterWidth) && girl1Y == charOnGround) {
+                            girl1Y = charInBoatY;
+                            girl1X = localBoatCharX;
+                            updateBoatCharacterState(2);
+
+                        }
+                        else if (boy2SRX < touchX && touchX < (boy2SRX + characterWidth) && boy2Y == charOnGround) {
+                            boy2Y = charInBoatY;
+                            boy2X = localBoatCharX;
+                            updateBoatCharacterState(3);
+                        }
+                        else if (girl2SRX < touchX && touchX < (girl2SRX + characterWidth) && girl2Y == charOnGround) {
+                            girl2Y = charInBoatY;
+                            girl2X = localBoatCharX;
+                            updateBoatCharacterState(4);
+                        }
+                        else if (boy3SRX < touchX && touchX < (boy3SRX + characterWidth) && boy3Y == charOnGround) {
+                            boy3Y = charInBoatY;
+                            boy3X = localBoatCharX;
+                            updateBoatCharacterState(5);
+                        }
+                        else if (girl3SRX < touchX && touchX < (girl3SRX + characterWidth) && girl3Y == charOnGround) {
+                            girl3Y = charInBoatY;
+                            girl3X = localBoatCharX;
+                            updateBoatCharacterState(6);
+                        }
+                    }else if(boatX <= boatXLeftLimit){
+                        float localBoatCharX = boatLeftHuman == 0 ? char1InBoatX : char2InBoatX;
+
+                        if (boy1SLX < touchX && touchX < (boy1SLX + characterWidth) && boy1Y == charOnGround) {
+                            boy1Y = charInBoatY;
+                            boy1X = localBoatCharX;
+                            updateBoatCharacterState(1);
+
+                        }
+                        else if (girl1SLX < touchX && touchX < (girl1SLX + characterWidth) && girl1Y == charOnGround) {
+                            girl1Y = charInBoatY;
+                            girl1X = localBoatCharX;
+                            updateBoatCharacterState(2);
+
+                        }
+                        else if (boy2SLX < touchX && touchX < (boy2SLX + characterWidth) && boy2Y == charOnGround) {
+                            boy2Y = charInBoatY;
+                            boy2X = localBoatCharX;
+                            updateBoatCharacterState(3);
+                        }
+                        else if (girl2SLX < touchX && touchX < (girl2SLX + characterWidth) && girl2Y == charOnGround) {
+                            girl2Y = charInBoatY;
+                            girl2X = localBoatCharX;
+                            updateBoatCharacterState(4);
+                        }
+                        else if (boy3SLX < touchX && touchX < (boy3SLX + characterWidth) && boy3Y == charOnGround) {
+                            boy3Y = charInBoatY;
+                            boy3X = localBoatCharX;
+                            updateBoatCharacterState(5);
+                        }
+                        else if (girl3SLX < touchX && touchX < (girl3SLX + characterWidth) && girl3Y == charOnGround) {
+                            girl3Y = charInBoatY;
+                            girl3X = localBoatCharX;
+                            updateBoatCharacterState(6);
+                        }
 
                     }
-                    else if (girl1SRX < touchX && touchX < (girl1SRX + characterWidth) && girl1Y == charOnGround) {
-                        girl1Y = charInBoatY;
-                        girl1X = localBoatCharX;
-                        updateBoatCharacterState(2);
+                }
+
+            } else if (1000 < touchY && touchY < 1200) {
+                if (boatState == 0) {
+                    System.out.printf("%d", boatLeftHuman);
+                    System.out.println("im hgfjsd");
+
+                    if (boatLeftHuman != 0 && char1InBoatX < touchX && touchX < (char1InBoatX + characterWidth)) {
+                        System.out.println("im clicked");
+                        if (boatX == boatXRightLimit) {
+                            switch ((boatLeftHuman)) {
+                                case 1:
+                                    boy1X = boy1SRX;
+                                    boy1Y = charOnGround;
+                                    break;
+                                case 2:
+                                    girl1X = girl1SRX;
+                                    girl1Y = charOnGround;
+                                    break;
+                                case 3:
+                                    boy2X = boy2SRX;
+                                    boy2Y = charOnGround;
+                                    break;
+                                case 4:
+                                    girl2X = girl2SRX;
+                                    girl2Y = charOnGround;
+                                    break;
+                                case 5:
+                                    boy3X = boy3SRX;
+                                    boy3Y = charOnGround;
+                                    break;
+                                case 6:
+                                    girl3X = girl3SRX;
+                                    girl3Y = charOnGround;
+                                    break;
+                            }
+                            boatLeftHuman = 0;
+
+                        } else if (boatX <= boatXLeftLimit) {
+                            System.out.println("im clicked left");
+
+                            switch ((boatLeftHuman)) {
+                                case 1:
+                                    boy1X = boy1SLX;
+                                    boy1Y = charOnGround;
+                                    break;
+                                case 2:
+                                    girl1X = girl1SLX;
+                                    girl1Y = charOnGround;
+                                    break;
+                                case 3:
+                                    boy2X = boy2SLX;
+                                    boy2Y = charOnGround;
+                                    break;
+                                case 4:
+                                    girl2X = girl2SLX;
+                                    girl2Y = charOnGround;
+                                    break;
+                                case 5:
+                                    boy3X = boy3SLX;
+                                    boy3Y = charOnGround;
+                                    break;
+                                case 6:
+                                    girl3X = girl3SLX;
+                                    girl3Y = charOnGround;
+                                    break;
+                            }
+                            boatLeftHuman = 0;
+                        }
 
                     }
-                    else if (boy2SRX < touchX && touchX < (boy2SRX + characterWidth) && boy2Y == charOnGround) {
-                        boy2Y = charInBoatY;
-                        boy2X = localBoatCharX;
-                        updateBoatCharacterState(3);
-                    }
-                    else if (girl2SRX < touchX && touchX < (girl2SRX + characterWidth) && girl2Y == charOnGround) {
-                        girl2Y = charInBoatY;
-                        girl2X = localBoatCharX;
-                        updateBoatCharacterState(4);
-                    }
-                    else if (boy3SRX < touchX && touchX < (boy3SRX + characterWidth) && boy3Y == charOnGround) {
-                        boy3Y = charInBoatY;
-                        boy3X = localBoatCharX;
-                        updateBoatCharacterState(5);
-                    }
-                    else if (girl3SRX < touchX && touchX < (girl3SRX + characterWidth) && girl3Y == charOnGround) {
-                        girl3Y = charInBoatY;
-                        girl3X = localBoatCharX;
-                        updateBoatCharacterState(6);
+
+                    if (boatRightHuman != 0 && char2InBoatX < touchX && touchX < (char2InBoatX + characterWidth)) {
+                        if (boatX == boatXRightLimit) {
+                            switch ((boatRightHuman)) {
+                                case 1:
+                                    boy1X = boy1SRX;
+                                    boy1Y = charOnGround;
+                                    break;
+                                case 2:
+                                    girl1X = girl1SRX;
+                                    girl1Y = charOnGround;
+                                    break;
+                                case 3:
+                                    boy2X = boy2SRX;
+                                    boy2Y = charOnGround;
+                                    break;
+                                case 4:
+                                    girl2X = girl2SRX;
+                                    girl2Y = charOnGround;
+                                    break;
+                                case 5:
+                                    boy3X = boy3SRX;
+                                    boy3Y = charOnGround;
+                                    break;
+                                case 6:
+                                    girl3X = girl3SRX;
+                                    girl3Y = charOnGround;
+                                    break;
+                            }
+                        } else if (boatX <= boatXLeftLimit) {
+                            switch ((boatRightHuman)) {
+                                case 1:
+                                    boy1X = boy1SLX;
+                                    boy1Y = charOnGround;
+                                    break;
+                                case 2:
+                                    girl1X = girl1SLX;
+                                    girl1Y = charOnGround;
+                                    break;
+                                case 3:
+                                    boy2X = boy2SLX;
+                                    boy2Y = charOnGround;
+                                    break;
+                                case 4:
+                                    girl2X = girl2SLX;
+                                    girl2Y = charOnGround;
+                                    break;
+                                case 5:
+                                    boy3X = boy3SLX;
+                                    boy3Y = charOnGround;
+                                    break;
+                                case 6:
+                                    girl3X = girl3SLX;
+                                    girl3Y = charOnGround;
+                                    break;
+                            }
+                        }
+
+                        boatRightHuman = 0;
                     }
                 }
 
@@ -209,6 +387,7 @@ public class rivercrossing extends ApplicationAdapter {
 
         if(boatX <= boatXLeftLimit || boatX >= boatXRightLimit){
             boatState = 0;
+            updateCharXsInBoat();
         }
 
 
@@ -282,6 +461,14 @@ public class rivercrossing extends ApplicationAdapter {
             }
 
         }
+    }
+
+    public void updateCharXsInBoat(){
+        float screenWidth = Gdx.graphics.getWidth();
+        float boatWidth = screenWidth/4;
+
+        char1InBoatX = boatX + 100;
+        char2InBoatX = boatX + boatWidth - 150 - characterWidth;
     }
 
 	@Override
