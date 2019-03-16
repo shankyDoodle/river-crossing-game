@@ -10,7 +10,7 @@ public class rivercrossing extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture background;
 	Texture boat;
-	Texture goButton, homeButton, restartButton;
+	Texture goButton, homeButton, restartButton, gameOver;
 
 	Sprite sGoButton, sHomeButton, sRestartButton;
 
@@ -33,6 +33,8 @@ public class rivercrossing extends ApplicationAdapter {
 
     int boatLeftHuman, boatRightHuman;
 
+    boolean isGameOver;
+
 	@Override
 	public void create () {
         float screenWidth = Gdx.graphics.getWidth();
@@ -47,6 +49,7 @@ public class rivercrossing extends ApplicationAdapter {
         goButton = new Texture("start2.png");
         homeButton = new Texture("home.png");
         restartButton = new Texture("restart.png");
+        gameOver = new Texture("gameover.png");
 
         boatXRightLimit = screenWidth-boatWidth-150;
         boatXLeftLimit = 150;
@@ -94,6 +97,8 @@ public class rivercrossing extends ApplicationAdapter {
         boatLeftHuman = 0;
         boatRightHuman = 0;
 
+        isGameOver = false;
+
         setDimensionsOfMovables();
 	}
 
@@ -125,6 +130,8 @@ public class rivercrossing extends ApplicationAdapter {
 
         char1InBoatX = boatX + 100;
         char2InBoatX = boatX + boatWidth - 150 - characterWidth;
+
+        isGameOver = false;
 
     }
 
@@ -386,6 +393,10 @@ public class rivercrossing extends ApplicationAdapter {
         }
 
         if(boatX <= boatXLeftLimit || boatX >= boatXRightLimit){
+            if(boatState!=0){
+                isGameOver = decideIfGameOver();
+            }
+
             boatState = 0;
             updateCharXsInBoat();
         }
@@ -399,6 +410,10 @@ public class rivercrossing extends ApplicationAdapter {
 
         batch.draw(boy3, boy3X, boy3Y, characterWidth, characterHeight);
         batch.draw(girl3, girl3X, girl3Y, characterWidth, characterHeight);
+
+        if(isGameOver){
+            batch.draw(gameOver, screenWidth/2-gameOver.getWidth(), screenHeight/2-gameOver.getHeight(), screenWidth/3, screenHeight/3);
+        }
 
 
         batch.draw(boat, boatX, 0, boatWidth,boatHeight);
@@ -469,6 +484,55 @@ public class rivercrossing extends ApplicationAdapter {
 
         char1InBoatX = boatX + 100;
         char2InBoatX = boatX + boatWidth - 150 - characterWidth;
+    }
+
+    public boolean decideIfGameOver(){
+        float screenWidth = Gdx.graphics.getWidth();
+        float midScreen = screenWidth/2;
+
+            if (girl1X < midScreen) {
+                //girl1 is on left side
+                if ((boy1Y != charInBoatY && boy1X != boy1SLX && (boy2X == boy2SLX || boy3X == boy3SLX))
+                        || (boy1Y == charInBoatY && boy1X > midScreen)){
+                    return true;
+                }
+            } else if (girl1X > midScreen) {
+                //girl1 is on right side
+                if ((boy1Y != charInBoatY && boy1X != boy1SRX && (boy2X == boy2SRX || boy3X == boy3SRX))
+                        || (boy1Y == charInBoatY && boy1X < midScreen)){
+                    return true;
+                }
+            }
+
+            if (girl2X < midScreen) {
+                //girl2 is on left side
+                if ((boy2Y != charInBoatY && boy2X != boy2SLX && (boy1X == boy1SLX || boy3X == boy3SLX))
+                        || (boy2Y == charInBoatY && boy2X > midScreen)){
+                    return true;
+                }
+            } else if (girl2X > midScreen) {
+                //girl2 is on right side
+                if ((boy2Y != charInBoatY && boy2X != boy2SRX && (boy1X == boy1SRX || boy3X == boy3SRX))
+                        || (boy2Y == charInBoatY && boy2X < midScreen)){
+                    return true;
+                }
+            }
+
+            if (girl3X < midScreen) {
+                //girl2 is on left side
+                if ((boy3Y != charInBoatY && boy3X != boy3SLX && (boy1X == boy1SLX || boy2X == boy2SLX))
+                        || (boy3Y == charInBoatY && boy3X > midScreen)){
+                    return true;
+                }
+            } else if (girl3X > midScreen) {
+                //girl2 is on right side
+                if ((boy3Y != charInBoatY && boy3X != boy3SRX && (boy1X == boy1SRX || boy2X == boy2SRX))
+                        || (boy3Y == charInBoatY && boy3X < midScreen)){
+                    return true;
+                }
+            }
+
+        return false;
     }
 
 	@Override
