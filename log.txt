@@ -1,0 +1,215 @@
+commit 2494ee9fa0aaa2ab2996a46d886e041890061af1
+Author: skaldat1 <skaldat1@binghamton.edu>
+Date:   Fri Mar 15 23:48:10 2019 -0400
+
+    b4 submission last commit
+
+ README.md | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+commit bcfe09f9703b4c7df149061d4d7464eee5cc7383
+Author: skaldat1 <skaldat1@binghamton.edu>
+Date:   Fri Mar 15 23:33:36 2019 -0400
+
+    game over logic WIP2.
+
+ .../shankydoodle/rivercrossing/rivercrossing.java  | 450 +++++++++++----------
+ 1 file changed, 246 insertions(+), 204 deletions(-)
+
+commit 8695695ec6a9d8cfe5d6671107a77c99d51394b9
+Author: skaldat1 <skaldat1@binghamton.edu>
+Date:   Fri Mar 15 23:27:58 2019 -0400
+
+    game over logic WIP.
+
+ android/assets/gameover.png                        | Bin 0 -> 11293 bytes
+ .../shankydoodle/rivercrossing/rivercrossing.java  |  66 ++++++++++++++++++++-
+ 2 files changed, 65 insertions(+), 1 deletion(-)
+
+commit 2ad09f5634a011e8dae44ded726935b53b1b3f24
+Author: skaldat1 <skaldat1@binghamton.edu>
+Date:   Fri Mar 15 22:25:33 2019 -0400
+
+    all characters moved left right done...hushh...
+
+ .../shankydoodle/rivercrossing/rivercrossing.java  | 243 ++++++++++++++++++---
+ 1 file changed, 215 insertions(+), 28 deletions(-)
+
+commit dc382e1fc442d996fcb026c43542a07028b5605f
+Author: skaldat1 <skaldat1@binghamton.edu>
+Date:   Fri Mar 15 20:56:31 2019 -0400
+
+    character movement with boat completed
+
+ .../shankydoodle/rivercrossing/rivercrossing.java  | 54 +++++++++++++++++++++-
+ 1 file changed, 53 insertions(+), 1 deletion(-)
+
+commit e0a30e5a66fdeb38d8d624049a01d07f5e63a1ba
+Author: skaldat1 <skaldat1@binghamton.edu>
+Date:   Fri Mar 15 20:19:41 2019 -0400
+
+    reset button functionality added.
+
+ core/src/com/shankydoodle/rivercrossing/rivercrossing.java | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
+
+commit 501dcb9d9ba9355da10e1be36a34ae8e293b6076
+Author: skaldat1 <skaldat1@binghamton.edu>
+Date:   Fri Mar 15 20:17:17 2019 -0400
+
+    all characters boat sitting done from left side
+
+ .../shankydoodle/rivercrossing/rivercrossing.java  | 81 ++++++++++++++++++----
+ 1 file changed, 67 insertions(+), 14 deletions(-)
+
+commit 5cde1b6079505c44f3fa760238a419640c2b3d12
+Author: skaldat1 <skaldat1@binghamton.edu>
+Date:   Mon Mar 11 03:01:41 2019 -0400
+
+    boy1 added in boat
+
+ .../shankydoodle/rivercrossing/rivercrossing.java  | 71 +++++++++++++++-------
+ 1 file changed, 49 insertions(+), 22 deletions(-)
+
+commit 8033cadadb2147344486bb13fd5df187db4fa2dc
+Author: skaldat1 <skaldat1@binghamton.edu>
+Date:   Mon Mar 11 02:28:00 2019 -0400
+
+    human characters added
+
+ android/assets/boy1.png                            | Bin 0 -> 126581 bytes
+ android/assets/boy2.png                            | Bin 0 -> 107529 bytes
+ android/assets/boy3.png                            | Bin 0 -> 114005 bytes
+ android/assets/girl1.png                           | Bin 0 -> 117208 bytes
+ android/assets/girl2.png                           | Bin 0 -> 110593 bytes
+ android/assets/girl3.png                           | Bin 0 -> 107111 bytes
+ .../shankydoodle/rivercrossing/rivercrossing.java  |  72 +++++++++++++++++----
+ 7 files changed, 61 insertions(+), 11 deletions(-)
+
+commit 7d2206cf8fa8bdddcdd23e5b5be5c4d402cc6361
+Author: skaldat1 <skaldat1@binghamton.edu>
+Date:   Mon Mar 11 01:15:37 2019 -0400
+
+    boat motion added.
+
+ .../shankydoodle/rivercrossing/rivercrossing.java  | 46 +++++++++++++++-------
+ 1 file changed, 31 insertions(+), 15 deletions(-)
+
+commit 5124d3c952cb29c61e08d54766eeca38ea0d1a99
+Author: skaldat1 <skaldat1@binghamton.edu>
+Date:   Fri Mar 8 22:42:19 2019 -0500
+
+    buttons added
+
+ android/assets/home.png                            | Bin 0 -> 1696 bytes
+ android/assets/restart.png                         | Bin 0 -> 2024 bytes
+ .../shankydoodle/rivercrossing/rivercrossing.java  |  68 ++++++++++++++++++---
+ 3 files changed, 60 insertions(+), 8 deletions(-)
+
+commit a04a92c3a5440932dd5b18964293234ac1a95df0
+Author: skaldat1 <skaldat1@binghamton.edu>
+Date:   Thu Mar 7 13:48:57 2019 -0500
+
+    baseline drawing done
+
+ android/assets/bg.jpg                              | Bin 0 -> 241713 bytes
+ android/assets/boat.png                            | Bin 0 -> 126227 bytes
+ android/assets/farmer1.png                         | Bin 0 -> 338484 bytes
+ android/assets/farmer2.png                         | Bin 0 -> 86275 bytes
+ android/assets/goat1.png                           | Bin 0 -> 502347 bytes
+ android/assets/sheep1.png                          | Bin 0 -> 147101 bytes
+ android/assets/start1.png                          | Bin 0 -> 1976 bytes
+ android/assets/start2.png                          | Bin 0 -> 1567 bytes
+ .../shankydoodle/rivercrossing/rivercrossing.java  |  25 ++++++++++++++++-----
+ 9 files changed, 19 insertions(+), 6 deletions(-)
+
+commit 3a9e9d6f393323ae24173319f3067568dd230038
+Author: skaldat1 <skaldat1@binghamton.edu>
+Date:   Thu Mar 7 08:42:56 2019 -0500
+
+    gradle spec updated
+
+ build.gradle                             | 44 ++++++++++++++++----------------
+ gradle/wrapper/gradle-wrapper.properties |  4 +--
+ 2 files changed, 24 insertions(+), 24 deletions(-)
+
+commit a66da000801880bf8e96c7061ce825ae75bb58c3
+Author: skaldat1 <skaldat1@binghamton.edu>
+Date:   Wed Mar 6 23:14:13 2019 -0500
+
+    first commit
+
+ .gitignore                                         | 125 +++++++++++++++
+ android/AndroidManifest.xml                        |  24 +++
+ android/assets/badlogic.jpg                        | Bin 0 -> 68465 bytes
+ android/build.gradle                               | 144 +++++++++++++++++
+ android/ic_launcher-web.png                        | Bin 0 -> 22195 bytes
+ android/proguard-rules.pro                         |  45 ++++++
+ android/project.properties                         |   9 ++
+ android/res/drawable-anydpi-v26/ic_launcher.xml    |   6 +
+ .../drawable-anydpi-v26/ic_launcher_foreground.xml |  40 +++++
+ android/res/drawable-hdpi/ic_launcher.png          | Bin 0 -> 16820 bytes
+ android/res/drawable-mdpi/ic_launcher.png          | Bin 0 -> 16124 bytes
+ android/res/drawable-xhdpi/ic_launcher.png         | Bin 0 -> 17915 bytes
+ android/res/drawable-xxhdpi/ic_launcher.png        | Bin 0 -> 18746 bytes
+ android/res/drawable-xxxhdpi/ic_launcher.png       | Bin 0 -> 19448 bytes
+ android/res/values/color.xml                       |   4 +
+ android/res/values/strings.xml                     |   6 +
+ android/res/values/styles.xml                      |  12 ++
+ .../rivercrossing/AndroidLauncher.java             |  16 ++
+ build.gradle                                       | 125 +++++++++++++++
+ core/build.gradle                                  |  11 ++
+ .../shankydoodle/rivercrossing/rivercrossing.java  |  33 ++++
+ core/src/rivercrossing.gwt.xml                     |   5 +
+ desktop/build.gradle                               |  55 +++++++
+ .../rivercrossing/desktop/DesktopLauncher.java     |  12 ++
+ gradle.properties                                  |   3 +
+ gradle/wrapper/gradle-wrapper.jar                  | Bin 0 -> 54208 bytes
+ gradle/wrapper/gradle-wrapper.properties           |   6 +
+ gradlew                                            | 172 +++++++++++++++++++++
+ gradlew.bat                                        |  84 ++++++++++
+ html/build.gradle                                  |  85 ++++++++++
+ .../rivercrossing/GdxDefinition.gwt.xml            |  11 ++
+ .../rivercrossing/GdxDefinitionSuperdev.gwt.xml    |  14 ++
+ .../rivercrossing/client/HtmlLauncher.java         |  51 ++++++
+ html/webapp/WEB-INF/web.xml                        |   3 +
+ html/webapp/index.html                             |  37 +++++
+ html/webapp/refresh.png                            | Bin 0 -> 2971 bytes
+ html/webapp/soundmanager2-jsmin.js                 | 113 ++++++++++++++
+ html/webapp/soundmanager2-setup.js                 |   1 +
+ html/webapp/styles.css                             |  43 ++++++
+ ios/Info.plist.xml                                 |  50 ++++++
+ ios/build.gradle                                   |  22 +++
+ ios/data/Default-1024w-1366h@2x~ipad.png           | Bin 0 -> 106582 bytes
+ ios/data/Default-375w-667h@2x.png                  | Bin 0 -> 98595 bytes
+ ios/data/Default-414w-736h@3x.png                  | Bin 0 -> 110696 bytes
+ ios/data/Default-568h@2x.png                       | Bin 0 -> 84382 bytes
+ ios/data/Default.png                               | Bin 0 -> 29751 bytes
+ ios/data/Default@2x.png                            | Bin 0 -> 85109 bytes
+ ios/data/Default@2x~ipad.png                       | Bin 0 -> 97633 bytes
+ ios/data/Default~ipad.png                          | Bin 0 -> 34134 bytes
+ .../AppIcon.appiconset/Contents.json               | 116 ++++++++++++++
+ .../AppIcon.appiconset/app-store-icon-1024@1x.png  | Bin 0 -> 14555 bytes
+ .../AppIcon.appiconset/ipad-app-icon-76@1x.png     | Bin 0 -> 1385 bytes
+ .../AppIcon.appiconset/ipad-app-icon-76@2x.png     | Bin 0 -> 2318 bytes
+ .../ipad-notifications-icon-20@1x.png              | Bin 0 -> 379 bytes
+ .../ipad-notifications-icon-20@2x.png              | Bin 0 -> 793 bytes
+ .../ipad-pro-app-icon-83.5@2x.png                  | Bin 0 -> 2444 bytes
+ .../ipad-settings-icon-29@1x.png                   | Bin 0 -> 623 bytes
+ .../ipad-settings-icon-29@2x.png                   | Bin 0 -> 1102 bytes
+ .../ipad-spotlight-icon-40@1x.png                  | Bin 0 -> 793 bytes
+ .../ipad-spotlight-icon-40@2x.png                  | Bin 0 -> 1462 bytes
+ .../AppIcon.appiconset/iphone-app-icon-60@2x.png   | Bin 0 -> 1952 bytes
+ .../AppIcon.appiconset/iphone-app-icon-60@3x.png   | Bin 0 -> 2564 bytes
+ .../iphone-notification-icon-20@2x.png             | Bin 0 -> 793 bytes
+ .../iphone-notification-icon-20@3x.png             | Bin 0 -> 1119 bytes
+ .../iphone-spotlight-icon-40@2x.png                | Bin 0 -> 1462 bytes
+ .../iphone-spotlight-icon-40@3x.png                | Bin 0 -> 1952 bytes
+ .../iphone-spotlight-settings-icon-29@2x.png       | Bin 0 -> 1102 bytes
+ .../iphone-spotlight-settings-icon-29@3x.png       | Bin 0 -> 1530 bytes
+ ios/data/Media.xcassets/Contents.json              |   6 +
+ ios/robovm.properties                              |   6 +
+ ios/robovm.xml                                     |  47 ++++++
+ .../shankydoodle/rivercrossing/IOSLauncher.java    |  22 +++
+ settings.gradle                                    |   1 +
+ 73 files changed, 1565 insertions(+)
