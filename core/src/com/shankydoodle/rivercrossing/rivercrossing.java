@@ -31,6 +31,8 @@ public class rivercrossing extends ApplicationAdapter {
     float boy1SRX, girl1SRX, boy2SRX, girl2SRX, boy3SRX, girl3SRX;
     float boy1SLX, girl1SLX, boy2SLX, girl2SLX, boy3SLX, girl3SLX;
 
+    int boatLeftHuman, boatRightHuman;
+
 	@Override
 	public void create () {
         float screenWidth = Gdx.graphics.getWidth();
@@ -69,16 +71,28 @@ public class rivercrossing extends ApplicationAdapter {
         boatX = boatXRightLimit;
 
         char1InBoatX = boatX + 100;
-        char2InBoatX = boatX + boatWidth - 100;
+        char2InBoatX = boatX + boatWidth - 150 - characterWidth;
 
         boy1SRX = screenWidth-((characterWidth+5)*6);
         girl1SRX = screenWidth-((characterWidth+10)*5);
+        boy1SLX = ((characterWidth+5)*6)- characterWidth;;
+        girl1SLX = ((characterWidth+10)*5)- characterWidth;
 
         boy2SRX = screenWidth-((characterWidth+5)*4);
         girl2SRX = screenWidth-((characterWidth+10)*3);
+        boy2SLX = ((characterWidth+5)*4)- characterWidth;
+        girl2SLX = ((characterWidth+10)*3)- characterWidth;
+
 
         boy3SRX = screenWidth-((characterWidth+5)*2);
         girl3SRX = screenWidth-((characterWidth+25)*1);
+        boy3SLX = ((characterWidth+5)*2)- characterWidth;
+        girl3SLX = ((characterWidth+25)*1) - characterWidth;
+
+
+        //codes for human characters goes from 1 to 6;
+        boatLeftHuman = 0;
+        boatRightHuman = 0;
 
         setDimensionsOfMovables();
 	}
@@ -124,31 +138,62 @@ public class rivercrossing extends ApplicationAdapter {
         batch.draw(restartButton, screenWidth-500, screenHeight-350, screenWidth/13, screenWidth/13);
 
 
-
-
         if (Gdx.input.justTouched()) {
             float touchX = Gdx.input.getX();
             float touchY = Gdx.input.getY();
 
-            if(touchY > 170 && touchY< 330){
-                if(touchX > 120 && touchX < 290){
-                    if(boatState == 0 ){
-                        if(boatX >= boatXRightLimit){
+            if (touchY > 170 && touchY < 330) {
+                if (touchX > 120 && touchX < 290) {
+                    if (boatState == 0) {
+                        if (boatX >= boatXRightLimit) {
                             boatState = 1;
-                        }else if(boatX <= boatXLeftLimit){
+                        } else if (boatX <= boatXLeftLimit) {
                             boatState = 2;
                         }
                     }
 
-                }else if(touchX > 2240 && touchX<2390){
+                } else if (touchX > 2240 && touchX < 2390) {
                     System.out.println("reset button clicked");
-                }else if(touchX > 2450 && touchX<2600){
+                } else if (touchX > 2450 && touchX < 2600) {
                     System.out.println("home button clicked");
                 }
-            }else if(touchY > 700 && touchY< 930){
-                if(boy1SRX < touchX && touchX< (boy1SRX+characterWidth) && boy1Y == charOnGround){
-                    boy1Y = charInBoatY;
-                    boy1X = char1InBoatX;
+            } else if (touchY > 700 && touchY < 930) {
+
+                if(boatLeftHuman == 0 || boatRightHuman == 0){
+                    float localBoatCharX = boatLeftHuman == 0 ? char1InBoatX : char2InBoatX;
+
+                    if (boy1SRX < touchX && touchX < (boy1SRX + characterWidth) && boy1Y == charOnGround) {
+                        boy1Y = charInBoatY;
+                        boy1X = localBoatCharX;
+                        updateBoatCharacterState(1);
+
+                    }
+                    else if (girl1SRX < touchX && touchX < (girl1SRX + characterWidth) && girl1Y == charOnGround) {
+                        girl1Y = charInBoatY;
+                        girl1X = localBoatCharX;
+                        updateBoatCharacterState(2);
+
+                    }
+                    else if (boy2SRX < touchX && touchX < (boy2SRX + characterWidth) && boy2Y == charOnGround) {
+                        boy2Y = charInBoatY;
+                        boy2X = localBoatCharX;
+                        updateBoatCharacterState(3);
+                    }
+                    else if (girl2SRX < touchX && touchX < (girl2SRX + characterWidth) && girl2Y == charOnGround) {
+                        girl2Y = charInBoatY;
+                        girl2X = localBoatCharX;
+                        updateBoatCharacterState(4);
+                    }
+                    else if (boy3SRX < touchX && touchX < (boy3SRX + characterWidth) && boy3Y == charOnGround) {
+                        boy3Y = charInBoatY;
+                        boy3X = localBoatCharX;
+                        updateBoatCharacterState(5);
+                    }
+                    else if (girl3SRX < touchX && touchX < (girl3SRX + characterWidth) && girl3Y == charOnGround) {
+                        girl3Y = charInBoatY;
+                        girl3X = localBoatCharX;
+                        updateBoatCharacterState(6);
+                    }
                 }
 
             }
@@ -182,6 +227,14 @@ public class rivercrossing extends ApplicationAdapter {
 
         batch.end();
 	}
+
+	public void updateBoatCharacterState(int n){
+        if(boatLeftHuman == 0){
+            boatLeftHuman = n;
+        }else {
+            boatRightHuman = n;
+        }
+    }
 
 	@Override
 	public void dispose () {
