@@ -134,8 +134,7 @@ public class rivercrossing extends ApplicationAdapter {
 		batch.draw(background, 0, 0, screenWidth, screenHeight);
 
 		batch.draw(goButton, 100, screenHeight-350, screenWidth/13, screenWidth/13);
-        batch.draw(homeButton, screenWidth-300, screenHeight-350, screenWidth/13, screenWidth/13);
-        batch.draw(restartButton, screenWidth-500, screenHeight-350, screenWidth/13, screenWidth/13);
+        batch.draw(restartButton, screenWidth-300, screenHeight-350, screenWidth/13, screenWidth/13);
 
 
         if (Gdx.input.justTouched()) {
@@ -151,11 +150,8 @@ public class rivercrossing extends ApplicationAdapter {
                             boatState = 2;
                         }
                     }
-
-                } else if (touchX > 2240 && touchX < 2390) {
-                    System.out.println("reset button clicked");
                 } else if (touchX > 2450 && touchX < 2600) {
-                    System.out.println("home button clicked");
+                    setDimensionsOfMovables();
                 }
             } else if (touchY > 700 && touchY < 930) {
 
